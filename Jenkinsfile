@@ -8,7 +8,9 @@ node {
             throw
         }
     }
+}
 
+node {
     stage('Stage 02') {
         try {
             echo 'Stage 02'

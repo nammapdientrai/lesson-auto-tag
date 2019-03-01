@@ -2,21 +2,17 @@ pipeline {
     agent any
 
     environment {
-        BRANCH_NAME = 'master'
+        VERSION = 0;
     }
 
     stages {
         stage ('Example') {
             steps {
-                echo env.BRANCH_NAME
-
                 script {
-                    if (env.BRANCH_NAME == 'master') {
-                        echo 'I only execute on the master branch'
-                    } else {
-                        echo 'I execute elsewhere'
-                    }
+                    env.VERSION = version sh(returnStdout: true, script: "git tag -l")
                 }
+
+                echo env.VERSION;
             }
         }
     }

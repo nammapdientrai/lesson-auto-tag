@@ -1,15 +1,13 @@
-node {
-    environment {
-        def HELLO = 'Hello World'
+pipeline {
+  agent { label 'docker' }
+  environment {
+    awesomeVersion = sh(returnStdout: true, script: 'echo 0.0.1')
+  }
+  stages {
+    stage('output_version') {
+      steps {
+        echo "awesomeVersion: ${awesomeVersion}"
+      }
     }
-
-    stage('Example') {
-        echo "${HELLO}"
-        
-        if (env.BRANCH_NAME == 'master') {
-            echo 'I only execute on the master branch'
-        } else {
-            echo 'I execute else where'
-        }
-    }
+  }
 }

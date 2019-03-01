@@ -4,10 +4,10 @@ node {
     }
 
     stage('Example') {
+        echo '${env.HELLO}'
+        
         if (env.BRANCH_NAME == 'master') {
             echo 'I only execute on the master branch'
-
-            echo '${env.HELLO}'
         } else {
             echo 'I execute else where'
         }

@@ -1,10 +1,16 @@
 pipeline {
     agent any
-
     stages {
-        stage ('Example') {
+        stage('Example') {
             steps {
-                sh 'cd /root/.jenkins/workspace/lession-auto-tag  && git tag -l'
+                echo 'Hello World'
+
+                script {
+                    def browsers = ['chrome', 'firefox']
+                    for (int i = 0; i < browsers.size(); ++i) {
+                        echo "Testing the ${browsers[i]} browser"
+                    }
+                }
             }
         }
     }

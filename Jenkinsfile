@@ -5,12 +5,14 @@ pipeline {
 
     stages {
         stage ('Example') {
-            echo env.BRANCH_NAME
+            steps {
+                echo env.BRANCH_NAME
 
-            if (env.BRANCH_NAME == 'master') {
-                echo 'I only execute on the master branch'
-            } else {
-                echo 'I execute elsewhere'
+                if (env.BRANCH_NAME == 'master') {
+                    echo 'I only execute on the master branch'
+                } else {
+                    echo 'I execute elsewhere'
+                }
             }
         }
     }

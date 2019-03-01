@@ -8,7 +8,9 @@ pipeline {
     stages {
         stage ('Example') {
             steps {
-                env.VERSION = sh(returnStdout: true, script: "cd /root/.jenkins/workspace/lession-auto-tag  | git tag -l")
+                script {
+                    env.VERSION = sh(returnStdout: true, script: "cd /root/.jenkins/workspace/lession-auto-tag  | git tag -l")
+                }
 
                 echo env.VERSION;
             }

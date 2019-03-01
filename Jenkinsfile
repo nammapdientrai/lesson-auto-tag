@@ -1,23 +1,14 @@
 node {
     stage('Stage 01') {
-        try {
-            echo 'Stage 01'
+        environment {
+            NAME_TRUE = 'TRUE'
+            NAME_FALSE = 'FALSE'
         }
-        catch (exc) {
-            echo 'Stage 01 error'
-            throw
-        }
-    }
-}
 
-node {
-    stage('Stage 02') {
-        try {
-            echo 'Stage 02'
-        }
-        catch (exc) {
-            echo 'Stage 2 error'
-            throw
+        if (env.NAME_TRUE == 'TRUE') {
+            echo 'True'
+        } else {
+            echo 'False'
         }
     }
 }

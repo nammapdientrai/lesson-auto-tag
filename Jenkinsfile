@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('Example') {
             steps {
-                sh 'sudo cd /root/.jenkins/workspace/lession-auto-tag  && git tag -l'
+                sh 'cd /root/.jenkins/workspace/lession-auto-tag  && git tag -l'
             }
         }
     }

@@ -1,17 +1,21 @@
-pipeline {
-    agent any
-    stages {
-        stage('Example') {
-            steps {
-                echo 'Hello World'
+node {
+    stage ("Foo") {
+        def data = new groovy.json.JsonSlurper().parseText(readFile('somefile.txt'))
+        sh "make $(data.options)"
+    }
 
-                script {
-                    def browsers = ['chrome', 'firefox']
-                    for (int i = 0; i < browsers.size(); ++i) {
-                        echo "Testing the ${browsers[i]} browser"
-                    }
-                }
-            }
+    stage ("Bar") {
+        try {
+            sh = "Make"
+        } catch (err) {
+            slackSend message: "Oh dude, didn't workout. ${err}"
+            error "Things wnt wrong"
+        }
+    }
+
+    if (env.BRANCH_NAME == 'master') {
+        stage ("Bar") {
+            echo "Deloy !!!"
         }
     }
 }

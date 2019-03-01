@@ -1,5 +1,6 @@
 pipeline {
-  agent { label 'docker' }
+  agent any
+  
   environment {
     awesomeVersion = sh(returnStdout: true, script: 'echo 0.0.1')
   }

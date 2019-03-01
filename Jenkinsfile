@@ -1,6 +1,6 @@
 node {
     withEnv(['HELLO = world']) {
-        print env.HELLO
+        echo '$HELLO'
     }
 
     stage('Example') {

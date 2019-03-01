@@ -1,10 +1,10 @@
 node {
     environment {
-        env.HELLO = 'Hello World'
+        def HELLO = 'Hello World'
     }
 
     stage('Example') {
-        echo $env.HELLO
+        echo "${HELLO}"
         
         if (env.BRANCH_NAME == 'master') {
             echo 'I only execute on the master branch'
